@@ -6,24 +6,6 @@ MODE builds on the `mllm_quant` code path for multimodal MoE-MLLM quantization, 
 
 ![MODE method overview](assets/method.png)
 
-## 📁 Repository Layout
-
-```text
-MODE/
-|-- mllm_quant/                  # Python package: models, quantization, rotation, calibration
-|   |-- calibration/             # Calibration sample processing
-|   |-- expert_mixed_precision/  # Expert-level mixed-precision utilities
-|   |-- moe_freq/                # Expert frequency recording
-|   |-- models/                  # Local model wrappers
-|   |-- quantization/            # GPTQ, fast GPTQ, RTN, eval helpers
-|   `-- rotation/                # QuaRot-compatible rotation utilities
-|-- scripts/                     # Main command-line entry points
-|-- data/                        # Small metadata and local calibration data
-|-- docs/                        # Extra usage notes
-|-- assets/                      # Paper assets
-`-- 3rdparty/                    # External evaluation/runtime repositories
-```
-
 ## ⚙️ Installation
 
 Use the same CUDA / PyTorch stack as your MLLM environment. A typical local setup is:
@@ -39,7 +21,7 @@ pip install vllm==0.14.1
 
 `lmms-eval` is recorded as a submodule under `3rdparty/lmms-eval`. `vllm` is not vendored in `3rdparty`; install the matching runtime wheel with `pip install vllm==0.14.1`.
 
-## 🗃️ Data
+## 🗃️ Calibration Data
 
 The repository may contain small calibration metadata, but large image folders and generated artifacts are intentionally ignored by git.
 
@@ -130,7 +112,7 @@ python scripts/quantize.py \
   --model_path outputs/qwen3vl-mode-avg3 \
   --model_type qwen3_vl_moe \
   --eval_model_type vllm \
-  --eval_tasks chartqa,textvqa_val \
+  --eval_tasks gqa,textvqa_val \
   --eval_batch_size 64 \
   --eval_max_model_len 16384 \
   --eval_output_path outputs/eval/qwen3vl-mode-avg3
