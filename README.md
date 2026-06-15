@@ -4,7 +4,7 @@ This repository contains the official implementation for **MODE: Modality-Decomp
 
 MODE builds on the `mllm_quant` code path for multimodal MoE-MLLM quantization, including RTN, GPTQ, fast GPTQ, QuaRot-compatible rotation, calibration utilities, expert routing analysis, and expert-level mixed-precision quantization.
 
-![](assets/method-new.pdf)
+![MODE method overview](assets/method.png)
 
 ## Repository Layout
 

@@ -28,8 +28,8 @@ wandb/
 *.ipynb
 *.pdf
 !assets/
-!assets/method-new.pdf
 *.png
+!assets/method.png
 *.jpg
 *.jpeg
 *.svg
