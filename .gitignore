@@ -32,6 +32,7 @@ wandb/
 !assets/method.png
 !assets/bit-allocate.png
 !assets/card_3.png
+!assets/fast_gptq.png
 *.jpg
 *.jpeg
 *.svg

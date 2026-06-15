@@ -68,7 +68,9 @@ python scripts/quantize.py \
 
 Fast GPTQ:
 
-`gptq_fast` parallelizes expert calibration across all visible GPUs. For example, if `CUDA_VISIBLE_DEVICES` exposes 4 GPUs, MODE calibrates MoE experts with 4-way GPU parallelism to reduce wall-clock quantization time.
+`gptq_fast` parallelizes expert calibration across all visible GPUs. MoE-MLLMs usually contain a large number of experts in each MoE layer, so standard serial GPTQ calibration can be very slow. At the same time, calibrating one expert has relatively low memory demand. MODE therefore distributes expert calibration across multiple GPUs: for example, if `CUDA_VISIBLE_DEVICES` exposes 4 GPUs, MODE calibrates MoE experts with 4-way GPU parallelism to reduce wall-clock quantization time.
+
+<img src="assets/fast_gptq.png" alt="fast GPTQ" width="90%">
 
 ```bash
 python scripts/quantize.py \
