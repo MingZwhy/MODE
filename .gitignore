@@ -30,6 +30,8 @@ wandb/
 !assets/
 *.png
 !assets/method.png
+!assets/bit-allocate.png
+!assets/card_3.png
 *.jpg
 *.jpeg
 *.svg

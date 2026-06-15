@@ -31,6 +31,10 @@ The repository may contain small calibration metadata, but large image folders a
 
 For COCO calibration, the data should be a JSON or JSONL file in a ShareGPT4V-style format. You can refer to the ShareGPT4V data preparation guide: [Data.md](https://github.com/InternLM/InternLM-XComposer/blob/main/projects/ShareGPT4V/docs/Data.md#prepare-images).
 
+A calibration image-text pair example:
+
+![Calibration image-text pair](assets/card_3.png)
+
 Expected local COCO image layout:
 
 ```text
@@ -171,6 +175,8 @@ python scripts/collect_expert_sensitivity.py \
 ```
 
 Step 3: solve expert bit allocation:
+
+![Expert bit allocation](assets/bit-allocate.png)
 
 ```bash
 python scripts/solve_expert_bits.py \
