@@ -6,7 +6,7 @@ MODE builds on the `mllm_quant` code path for multimodal MoE-MLLM quantization, 
 
 ![MODE method overview](assets/method.png)
 
-## Repository Layout
+## 📁 Repository Layout
 
 ```text
 MODE/
@@ -24,7 +24,7 @@ MODE/
 `-- 3rdparty/                    # External evaluation/runtime repositories
 ```
 
-## Installation
+## ⚙️ Installation
 
 Use the same CUDA / PyTorch stack as your MLLM environment. A typical local setup is:
 
@@ -39,7 +39,7 @@ pip install vllm==0.14.1
 
 `lmms-eval` is recorded as a submodule under `3rdparty/lmms-eval`. `vllm` is not vendored in `3rdparty`; install the matching runtime wheel with `pip install vllm==0.14.1`.
 
-## Data
+## 🗃️ Data
 
 The repository may contain small calibration metadata, but large image folders and generated artifacts are intentionally ignored by git.
 
@@ -65,7 +65,7 @@ Prepare or refresh calibration files with:
 bash scripts/prepare_calib_data.sh
 ```
 
-## Basic Quantization
+## 🔧 Basic Quantization
 
 GPTQ:
 
@@ -81,6 +81,8 @@ python scripts/quantize.py \
 ```
 
 Fast GPTQ:
+
+`gptq_fast` parallelizes expert calibration across all visible GPUs. For example, if `CUDA_VISIBLE_DEVICES` exposes 4 GPUs, MODE calibrates MoE experts with 4-way GPU parallelism to reduce wall-clock quantization time.
 
 ```bash
 python scripts/quantize.py \
@@ -118,7 +120,7 @@ python scripts/quantize.py \
   --quarot_before_quant
 ```
 
-## Evaluation
+## 📊 Evaluation
 
 Evaluate a saved model with the vLLM backend:
 
@@ -150,7 +152,9 @@ python scripts/quantize.py \
   --down_bits 3
 ```
 
-## Expert Mixed Precision
+## 🧩 Expert Mixed Precision
+
+For MoE-MLLMs, protecting attention layers at 4-bit is important for preserving quantized model performance. When applying expert-level bit maps, we recommend keeping `--attn_bits 4` while assigning mixed precision to MoE experts.
 
 Step 1: collect modality-wise expert routing frequency:
 
@@ -206,5 +210,5 @@ python scripts/quantize.py \
   --output_path outputs/qwen3vl-mode-avg3 \
   --method gptq_fast \
   --expert_bits_json outputs/expert_bits_avg3.json \
-  --attn_bits 3
+  --attn_bits 4
 ```
