@@ -176,7 +176,7 @@ python scripts/collect_expert_sensitivity.py \
 
 Step 3: solve expert bit allocation:
 
-![Expert bit allocation](assets/bit-allocate.png)
+<img src="assets/bit-allocate.png" alt="Expert bit allocation" width="50%">
 
 ```bash
 python scripts/solve_expert_bits.py \
