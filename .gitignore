@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build / environments
+build/
+dist/
+.env
+.venv/
+
+# Logs and experiment outputs
+*.log
+nohup.out
+record.log
+mode.log
+outputs/
+results/
+submissions/
+quantized_model/
+checkpoints/
+wandb/
+
+# Notebooks and generated paper figures
+*.ipynb
+*.pdf
+!assets/
+!assets/method-new.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.html
+*.csv
+*.xlsx
+
+# Large local data (kept locally, not committed)
+data/coco/
+data/train2017.zip
+data/sharegpt4v_instruct_gpt4-vision_cap100k.json
+data/sharegpt4v_mix665k_cap23k_coco-ap9k_lcs3k_sam9k_div2k.json
+
+# Generated sensitivity / bit allocation artifacts
+sensitivity*.json
+expert_bits*.json
+# Generated MoE frequency outputs
+mllm_quant/moe_freq/coco/
+mllm_quant/moe_freq/accuracy_verify/

@@ -1,0 +1,13 @@
+accelerate
+datasets
+numpy
+pillow
+safetensors
+scipy
+torch
+tqdm
+transformers
+
+# Evaluation/runtime stack used in the current mllm environment.
+# lmms-eval is provided as 3rdparty/lmms-eval.
+vllm==0.14.1

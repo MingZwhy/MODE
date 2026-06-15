@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mode-mllm-quant"
+version = "0.1.0"
+description = "Multimodal MoE-MLLM quantization with GPTQ, RTN, QuaRot, and experimental mixed precision."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "MODE contributors" }
+]
+dependencies = [
+  "accelerate",
+  "datasets",
+  "numpy",
+  "pillow",
+  "safetensors",
+  "scipy",
+  "torch",
+  "tqdm",
+  "transformers",
+]
+
+[project.optional-dependencies]
+eval = [
+  "vllm==0.14.1",
+]
+
+[tool.setuptools]
+packages = { find = { include = ["mllm_quant*"] } }
